@@ -1,0 +1,36 @@
+void setup() {
+  // put your setup code here, to run once:
+  int array1 = [3][3];
+  int array2 = [3][3];
+}
+
+void hit(){
+  
+  }
+void loop() {
+  while(!isDead1 && !isDead2){//while both players are alive, continue game
+
+  //switch case for 9 buttons
+  switch()
+  case 1: 
+    break;
+    case 2: 
+    break;
+    case 3: 
+    break;
+    case 4: 
+    break;
+    case 5: 
+    break;
+    case 6: 
+    break;
+    case 7: 
+    break;
+    case 8: 
+    break;
+    case 9: 
+    break;
+    
+    default:
+  }
+}
