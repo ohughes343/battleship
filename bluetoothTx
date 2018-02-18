@@ -1,4 +1,3 @@
-
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
@@ -11,7 +10,9 @@ void setup() {
   radio.stopListening();
 }
 void loop() {
-  const char text[] = "Hello World";
-  radio.write(&text, sizeof(text));
+  //const char text[] = "Hello World";
+  const int nums[] = {1,1,1,0,0,0,0,0,0};
+  //radio.write(&text, sizeof(text));
+  radio.write(&nums, sizeof(nums));
   delay(1000);
 }
