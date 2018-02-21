@@ -3,16 +3,92 @@
 #include <RF24.h>
 RF24 radio(7, 8); // CE, CSN
 const byte address[6] = "00001";
+const int startButton = 3;
+
+const int square1 = 4;
+const int square2 = 5;
+const int square3 = 6;
+const int square4 = 9;
+const int square5 = 10;
+const int square6 = A0;
+const int square7 = A1;
+const int square8 = A2;
+const int square9 = A3;
+
+
+
 void setup() {
   radio.begin();
   radio.openWritingPipe(address);
   radio.setPALevel(RF24_PA_MIN);
   radio.stopListening();
+  pinMode(startButton, INPUT);
+  pinMode(square1, INPUT);
+  pinMode(square2, INPUT);
+  pinMode(square3, INPUT);
+  pinMode(square4, INPUT);
+  pinMode(square5, INPUT);
+  pinMode(square6, INPUT);
+  pinMode(square7, INPUT);
+  pinMode(square8, INPUT);
+  pinMode(square9, INPUT);
+  
+
 }
+
+void sendData(nums){
+    radio.write(nums, sizeof(nums));
+    
+  }
 void loop() {
-  //const char text[] = "Hello World";
-  const int nums[] = {1,1,1,0,0,0,0,0,0};
-  //radio.write(&text, sizeof(text));
-  radio.write(&nums, sizeof(nums));
+  int nums[] = {0,0,0,0,0,0,0,0,0};
+
+  buttonState1 = digitalRead(square1);
+  buttonState2 = digitalRead(square2);
+  buttonState3 = digitalRead(square3);
+  buttonState4 = digitalRead(square4);
+  buttonState5 = digitalRead(square5);
+  buttonState6 = digitalRead(square6);
+  buttonState7 = digitalRead(square7);
+  buttonState8 = digitalRead(square8);
+  buttonState9 = digitalRead(square9);
+
+
+  //check if pin has completed a circuit. if so, make nums[i] = 1
+  if(buttonState1 == 1){
+    nums[0] = 1;
+    }
+    if(buttonState2 == 1){
+    nums[1] = 1;
+    }
+    if(buttonState3 == 1){
+    nums[2] = 1;
+    }
+    if(buttonState4 == 1){
+    nums[3] = 1;
+    }
+    if(buttonState5 == 1){
+    nums[4] = 1;
+    }
+    if(buttonState6 == 1){
+    nums[5] = 1;
+    }
+    if(buttonState7 == 1){
+    nums[6] = 1;
+    }
+    if(buttonState8 == 1){
+    nums[7] = 1;
+    }
+    if(buttonState9 == 1){
+    nums[8] = 1;
+    }
+   
   delay(1000);
+
+  if(startButton == 1){
+      sendData(nums);
+      break;
+    }
+    
+  
 }
